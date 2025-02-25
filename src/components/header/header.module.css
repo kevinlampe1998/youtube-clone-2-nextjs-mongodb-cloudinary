@@ -1,0 +1,182 @@
+/* .header a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+.hamburgerLogo, .searchLogo, .micLogo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hamburgerLogo:hover, .searchLogo:hover {
+    background: #272727;
+}
+
+.loggedHeader, .unlogged {
+    display: flex;
+    align-items: center;
+    height: 55px;
+}
+
+.create {
+    display: flex;
+    align-items: center;
+    background: #272727;
+    border-radius: 30px;
+    height: 36px;
+    width: 110px;
+    position: absolute;
+    right: 124px;
+}
+
+.plus {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(6px);
+}
+
+.plus > div {
+    height: 1px;
+    width: 17px;
+    background: #fff;
+}
+
+.create > p {
+    transform: translateX(9px);
+    font-size: 0.93rem;
+    font-weight: 600;
+}
+
+.plus > div:first-child {
+    transform: rotate(90deg);
+    position: absolute;
+}
+
+.loggedHeader > div:nth-of-type(2) {
+    font-weight: normal;
+    background: #8c6e63;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 38px;
+}
+
+.loggedHeader div:nth-of-type(2) > p {
+    font-size: 1.2rem;
+    font-family: sans-serif;
+    transform: translate(1px, 1px);
+}
+
+.hamburgerLogo {
+    margin-left: 9px;
+    
+}
+
+.hamburgerLogo > span {
+    height: 20px;
+    width: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+
+.hamburgerLogo > span > span {
+    height: 1px;
+    width: 18px;
+    background: #fff;
+}
+
+.youtubeLogo {
+    margin-left: 7px;
+}
+
+.bellLogo {
+    position: absolute;
+    right: 84px;
+}
+
+.bellLogo img {
+    transform: scale(0.9, 1);
+}
+
+.searchLogo {
+    
+}
+
+/* ---------- unlogged -------------------------------------------- */
+
+.unlogged {
+
+}
+
+.unlogged div:first-of-type,
+.unlogged div:nth-of-type(2),
+.unlogged div:nth-of-type(3) {
+    display: flex;
+}
+
+.unlogged div:first-of-type {
+    display: flex;
+    align-items: center;
+}
+
+.unlogged div:nth-of-type(2) {
+    position: relative;
+    left: 72px;
+}
+
+.unlogged div:nth-of-type(3) {
+    position: absolute;
+    right: 0;
+    width: 214px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.signInButton {
+    color: #fff;
+    border: 1px solid #555;
+    width: 98px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 23px;
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+.signInButton:hover {
+    background: #222;
+    border: 1px solid #0f0f0f;
+}
+
+.signInButton > svg {
+    margin-left: 10px;
+}
+
+.signInButton > p {
+    margin-left: 4px;
+    font-size: 1rem;
+}
+
+.ellipsisVertical {
+    transform: translate(62px, 0);
+}
