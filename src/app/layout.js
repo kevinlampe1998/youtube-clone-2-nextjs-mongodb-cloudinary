@@ -3,7 +3,7 @@ import ContextProvider from "@/components/context-provider/context-provider";
 import Header from "@/components/header/header";
 // import Header2 from "@/components/header2/header2";
 // import SlideBar from "@/components/slidebar/slidebar";
-// import ForeGround from "@/components/foreground/foreground";
+import ForeGround from "@/components/foreground/foreground";
 
 export const metadata = {
   title: "Create Next App",
@@ -15,13 +15,13 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <ContextProvider>
         <body>
-          {/* <ForeGround/> */}
+          <ForeGround/>
           <Header/>
           {/* <Header2/> */}
           {/* <SlideBar/> */}
-          {/* <main>
+          <main>
             {children}
-          </main> */}
+          </main>
         </body>
       </ContextProvider>
     </html>

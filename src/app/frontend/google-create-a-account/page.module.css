@@ -1,0 +1,107 @@
+.googleCreateAccount {
+    background: #0e0e0e;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    font-weight: normal;
+    padding-left: 24px;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+}
+
+.googleGRainbowLogo {
+    margin-top: 25px;
+}
+
+.googleCreateAccount h1 {
+    font-weight: normal;
+    font-size: 2.1rem;
+    margin-top: 22px;
+}
+
+.googleCreateAccount h2 {
+    font-size: 16px;
+    font-weight: normal;
+    margin-top: 14px;
+}
+
+.firstName, .lastName {
+    background: #0f0f0f;
+    border: 1px solid #999;
+    width: 452px;
+    height: 55px;
+    border-radius: 4px;
+    padding-left: 15px;
+    padding-bottom: 3px;
+    color: #fff;
+}
+
+.firstName:focus, .lastName:focus {
+    border: 1px solid #999;
+    outline: none;
+
+}
+
+.firstName::placeholder, .lastName::placeholder {
+    color: #ccc;
+    font-size: 1.1rem;
+}
+
+.firstName {
+    margin-top: 47px;
+}
+.lastName {
+    margin-top: 23px;
+}
+
+.next {
+    height: 40px;
+    width: 79px;
+    background: #9cccec;
+    color: #184792;
+    font-weight: bold;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 23px;
+    margin-top: 56px;
+}
+
+.bottom {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    font-size: 0.8rem;
+}
+
+.bottom > div {
+    display: flex;
+}
+
+.bottom > div:nth-of-type(1) {
+    padding: 10px 15px;
+    gap: 10px;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.bottom > div:nth-of-type(1) > svg {
+    transform: rotate(180deg);
+}
+
+.bottom > div:nth-of-type(2) {
+    gap: 10px;
+}
+
+.bottom > div:nth-of-type(2) > p {
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+.bottom > div:nth-of-type(1):hover, .bottom > div:nth-of-type(2) > p:hover {
+    /* background: #222; */
+}
