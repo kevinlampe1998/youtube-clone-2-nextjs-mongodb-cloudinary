@@ -1,0 +1,215 @@
+.googleCreateAccount {
+    background: #0e0e0e;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    font-weight: normal;
+    padding-left: 24px;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+    padding-right: 25px;
+}
+
+.googleGRainbowLogo {
+    margin-top: 25px;
+}
+
+.googleCreateAccount h1 {
+    font-weight: normal;
+    font-size: 2.1rem;
+    margin-top: 22px;
+}
+
+.googleCreateAccount h2 {
+    font-size: 16px;
+    font-weight: normal;
+    margin-top: 14px;
+}
+
+/* .gender, .lastName {
+    background: #0f0f0f;
+    border: 1px solid #999;
+    width: 452px;
+    height: 55px;
+    border-radius: 4px;
+    padding-left: 15px;
+    padding-bottom: 3px;
+    color: #fff;
+}
+
+.gender:focus, .lastName:focus, .birthDate > div > input:focus {
+    border: 1px solid #999;
+    outline: none;
+
+}
+
+.gender::placeholder, .lastName::placeholder, .birthDate > div > input::placeholder {
+    color: #ccc;
+    font-size: 1.1rem;
+}
+
+.gender {
+    width: 90%;
+} */
+
+.forgotEmail, .learnMore, .aboutUsingGuest, .createAccount,
+.next {
+    color: #91aee5;
+    font-weight: bold;
+}
+
+.forgotEmail {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: block;
+}
+
+.next {
+    height: 40px;
+    width: 79px;
+    background: #9cccec;
+    color: #184792;
+    font-weight: bold;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 23px;
+    margin-top: 56px;
+}
+
+.bottom {
+    position: absolute;
+    bottom: 14px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 0.8rem;
+}
+
+.bottom > div {
+    display: flex;
+}
+
+.bottom > div:nth-of-type(1) {
+    padding: 10px 15px;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.bottom > div:nth-of-type(1) > svg {
+    transform: rotate(180deg);
+    margin-left: 25px;
+}
+
+.bottom > div:nth-of-type(2) {
+    gap: 5px;
+    margin-right: 30px;
+}
+
+.bottom > div:nth-of-type(2) > p {
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+.bottom > div:nth-of-type(1):hover, .bottom > div:nth-of-type(2) > p:hover {
+    background: #222;
+}
+
+.language {
+    transform: translate(-10px, 0);
+}
+
+.birthDate {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 42px;
+}
+
+.birthDate > div {
+    position: relative;
+    width: 33%;
+    height: 57px;
+}
+
+.month {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.monthInput {
+    position: absolute;
+}
+
+.monthTriangle {
+    position: absolute;
+    right: 18px;
+    transform: scaleX(2) rotate(180deg);
+}
+
+.monthList {
+    display: none;
+}
+
+.day {
+    display: flex;
+    justify-content: center;
+}
+
+.year {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.birthDate > div > input {
+    background: #0f0f0f;
+    border: 1px solid #999;
+    height: 100%;
+    border-radius: 4px;
+    padding-left: 15px;
+    padding-bottom: 3px;
+    color: #fff;
+    width: 100%;
+}
+
+.gender {
+    border: 1px solid blue;
+    margin-top: 17px;
+    position: relative;
+    height: 59px;
+    display: flex;
+    align-items: center;
+}
+
+.gender > input {
+    background: #0f0f0f;
+    border: 1px solid #999;
+    height: 100%;
+    border-radius: 4px;
+    padding-left: 15px;
+    padding-bottom: 3px;
+    color: #fff;
+    width: 100%;
+    position: absolute;
+}
+
+.genderList {
+    display: none;
+}
+
+.gender > input::placeholder, .birthDate > div > input::placeholder {
+    font-size: 1.05rem;
+    color: #ccc;
+}
+
+.genderTriangle {
+    border: 1px solid blue;
+    position: absolute;
+    right: 0;
+}

@@ -3,8 +3,11 @@
 import styles from './page.module.css';
 import { Triangle } from 'lucide-react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const CreateAGoogleAccount = () => {
+    const router = useRouter();
+
     return (
         <div className={styles.googleCreateAccount}>
             <Image
@@ -19,9 +22,9 @@ const CreateAGoogleAccount = () => {
             <input className={styles.firstName} placeholder='First name'/>
             <input className={styles.lastName} placeholder='Last name (optional)'/>
 
-            <p className={styles.next}>Next</p>
+            <p className={styles.next} onClick={() => router.push('/frontend/google-create-a-account/basic-information')}>Next</p>
             <section className={styles.bottom}>
-                <div>
+                <div className={styles.language}>
                     <p>English (United States) </p>
                     <Triangle size={5} fill='#fff' className={styles.triangle}/>
                 </div>
