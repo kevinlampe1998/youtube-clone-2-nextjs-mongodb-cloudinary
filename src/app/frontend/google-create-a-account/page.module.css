@@ -40,7 +40,6 @@
 .firstName:focus, .lastName:focus {
     border: 1px solid #999;
     outline: none;
-
 }
 
 .firstName::placeholder, .lastName::placeholder {

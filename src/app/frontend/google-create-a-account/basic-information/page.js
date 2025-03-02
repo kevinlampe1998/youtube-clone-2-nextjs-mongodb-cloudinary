@@ -4,10 +4,39 @@ import styles from './page.module.css';
 import { Triangle } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState, useEffect, useRef } from 'react';
+import months, { monthDays } from '@/lib/months';
 
 const BasicInformation = () => {
+    const [ birthDate, setBirthDate ] = useState({
+        month: '', day: '', year: ''
+    });
+    const foreGround = useRef();
+    const monthList = useRef();
+
+    useEffect(() => {
+        months.every(month => birthDate.month !== month) && setBirthDate(prev =>
+            ({ ...prev, month: '' }))
+    }, [birthDate.month]);
+
+    useEffect(() => {
+        console.log(birthDate);
+    });
+
+    const showMonthList = () => {
+        foreGround.current.style.display = 'block';
+        monthList.current.style.display = 'block';
+    };
+
+    const closeForeGround = (e) => {
+        const monthPTagList = [...monthList.current.children];
+
+        !(monthPTagList.some(monthPTag => monthPTag === e.target)) &&
+            (foreGround.current.style.display = 'none');
+    };
+
     return (
-        <div className={styles.googleCreateAccount}>
+        <div className={styles.basicInfo}>
             <Image
                 className={styles.googleGRainbowLogo}
                 src='/logos/google-g-rainbow-logo.png'
@@ -19,35 +48,29 @@ const BasicInformation = () => {
             <h2>Enter your birthday and gender</h2>
 
             <div className={styles.birthDate}>
-                <div className={styles.month}>
-                    <input placeholder='Month' className={styles.monthInput}/>
+
+                <div className={styles.month} onClick={showMonthList}>
+                    <input placeholder='Month' className={styles.monthInput}
+                        onChange={(e) => setBirthDate((prev) =>
+                            ({ ...prev, month: e.target.value }))}
+                        value={birthDate.month}
+                    />
                     <Triangle size={6} className={styles.monthTriangle} fill='#bbb' color='#bbb'/>
-                    <div className={styles.monthList}>
-                        <p>January</p>
-                        <p>February</p>
-                        <p>March</p>
-                        <p>April</p>
-                        <p>May</p>
-                        <p>June</p>
-                        <p>July</p>
-                        <p>August</p>
-                        <p>September</p>
-                        <p>Oktober</p>
-                        <p>November</p>
-                        <p>December</p>
-                    </div>
                 </div>
+
                 <div className={styles.day}>
                     <input placeholder='Day'/>
                 </div>
+
                 <div className={styles.year}>
                     <input placeholder='Year'/>
                 </div>
+
             </div>
 
             <div className={styles.gender}>
                 <input placeholder='Gender'/>
-                <Triangle size={15} className={styles.genderTriangle}/>
+                <Triangle size={6} className={styles.genderTriangle} fill='#bbb' color='#bbb'/>
                 <div className={styles.genderList}>
                     <p>Female</p>
                     <p>Male</p>
@@ -57,7 +80,7 @@ const BasicInformation = () => {
             </div>
 
             <p className={styles.next} onClick={() => router.push('/frontend/google-create-a-account/basic-information')}>Next</p>
-            <Link href='#' className={styles.forgotEmail}>Forgot email?</Link>
+            <Link href='#' className={styles.why}>Why we ask for birthday and gender</Link>
             <section className={styles.bottom}>
                 <div className={styles.language}>
                     <p>English (United States) </p>
@@ -67,6 +90,15 @@ const BasicInformation = () => {
                     <p>Help</p>
                     <p>Privacy</p>
                     <p>Terms</p>
+                </div>
+            </section>
+            <section className={styles.basicInfoForeGround} ref={foreGround}
+                onClick={(e) => closeForeGround(e)}
+            >
+                <div className={styles.monthList} ref={monthList}>
+                    {months.map(month => <p key={month}
+                        onClick={() => setBirthDate(prev => ({ ...prev, month }))}
+                    >{month}</p>)}
                 </div>
             </section>
         </div>
