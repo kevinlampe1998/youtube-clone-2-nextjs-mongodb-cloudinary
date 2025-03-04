@@ -1,0 +1,203 @@
+.choose {
+    background: #0e0e0e;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    font-weight: normal;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+    padding-right: 25px;
+}
+
+.upper {
+    padding-left: 24px;
+}
+
+.googleGRainbowLogo {
+    margin-top: 25px;
+}
+
+.upper h1 {
+    font-weight: normal;
+    font-size: 32px;
+    margin-top: 17px;
+}
+
+.upper h2 {
+    font-size: 16px;
+    font-weight: normal;
+    margin-top: 20px;
+    margin-bottom: 36px;
+}
+
+.radioButton {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid #444;
+    /* border: 1px solid #999; */
+    height: 56px;
+    overflow: hidden;
+}
+
+.radioButton > div {
+    border: 2px solid #acc7f4;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    /* position: absolute;
+    right: 25px; */
+    margin-left: 2px;
+}
+
+.radioButton > div > span {
+    background: #acc7f4;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+}
+
+.hidden {
+    margin-left: 24px;
+    margin-top: 18px;
+    width: 451px;
+    position: relative;
+}
+
+.email {
+    display: flex;
+    align-items: center;
+}
+
+.email input {
+    background: #0f0f0f;
+    border: 1px solid #999;
+    width: 451px;
+    height: 56px;
+    border-radius: 4px;
+    padding-left: 15px;
+    padding-bottom: 3px;
+    color: #fff;
+}
+
+.email span {
+    position: absolute;
+    right: 14px;
+    font-size: 14px;
+    color: #eee;
+}
+
+.email input:focus {
+    border: 1px solid #999;
+    outline: none;
+
+}
+
+.email input::placeholder {
+    color: #ccc;
+    font-size: 16px;
+    transform: translateY(2px);
+}
+
+.hidden > p {
+    font-size: 12px;
+    margin-top: 5px;
+    margin-left: 15px;
+    color: #ccc;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 56px;
+}
+
+.back {
+    height: 40px;
+    width: 79px;
+    color: #9cccec;
+    font-weight: bold;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.back:hover {
+    background: #222;
+}
+
+.next {
+    height: 40px;
+    width: 79px;
+    background: #9cccec;
+    color: #184792;
+    font-weight: bold;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.remark {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.remark > * {
+    margin-bottom: 3px;
+}
+
+.remark div {
+    color: #acc7f4;
+    font-weight: bold;
+    display: inline;
+}
+
+.bottom {
+    /* border: 1px solid #fff; */
+    width: 100vw;
+    position: fixed;
+    bottom: 18px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px;
+}
+
+.bottom > div {
+    display: flex;
+    font-size: 12px;
+}
+
+.language {
+    padding: 7px 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.language > svg {
+    transform: rotate(180deg) scaleX(2);
+}
+
+.bottomRight {
+    margin-right: 24px;
+}
+
+.bottomRight > p {
+    padding: 7px 10px;
+    margin-left: 14px;
+    border-radius: 5px;
+}
+
+.bottomRight > p:hover, .language:hover {
+    background: #222;
+}

@@ -6,13 +6,23 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
 import months, { monthDays } from '@/lib/months';
+import { useRouter } from 'next/navigation';
+
+const googleGenderValues = ['Female','Male','Rather not say','Custom'];
 
 const BasicInformation = () => {
     const [ birthDate, setBirthDate ] = useState({
         month: '', day: '', year: ''
     });
+    const [ genderValue, setGenderValue ] = useState('');
     const foreGround = useRef();
     const monthList = useRef();
+    const genderList = useRef();
+    const monthContainer = useRef();
+    const genderContainer = useRef();
+
+    const [ maxDay, setMaxDay ] = useState(31);
+    const router = useRouter();
 
     useEffect(() => {
         months.every(month => birthDate.month !== month) && setBirthDate(prev =>
@@ -20,18 +30,27 @@ const BasicInformation = () => {
     }, [birthDate.month]);
 
     useEffect(() => {
-        console.log(birthDate);
-    });
+
+    }, [genderValue]);
 
     const showMonthList = () => {
         foreGround.current.style.display = 'block';
         monthList.current.style.display = 'block';
     };
 
+    const showGenderList = () => {
+        foreGround.current.style.display = 'block';
+        genderList.current.style.display = 'block';
+    };
+
     const closeForeGround = (e) => {
         const monthPTagList = [...monthList.current.children];
+        const genderPTagList = [...genderList.current.children];
 
-        !(monthPTagList.some(monthPTag => monthPTag === e.target)) &&
+        (!(monthPTagList.some(monthPTag => monthPTag === e.target)) ||
+        !(genderPTagList.some(genderPTag => genderPTag === e.target))) &&
+            (monthList.current.style.display = 'none') &&
+            (genderList.current.style.display = 'none') &&
             (foreGround.current.style.display = 'none');
     };
 
@@ -49,7 +68,9 @@ const BasicInformation = () => {
 
             <div className={styles.birthDate}>
 
-                <div className={styles.month} onClick={showMonthList}>
+                <div className={styles.month} onClick={showMonthList}
+                    ref={monthContainer}
+                >
                     <input placeholder='Month' className={styles.monthInput}
                         onChange={(e) => setBirthDate((prev) =>
                             ({ ...prev, month: e.target.value }))}
@@ -68,18 +89,22 @@ const BasicInformation = () => {
 
             </div>
 
-            <div className={styles.gender}>
-                <input placeholder='Gender'/>
+            <div className={styles.gender} onClick={showGenderList}
+                ref={genderContainer}
+            >
+
+                <input placeholder='Gender' value={genderValue}/>
+
                 <Triangle size={6} className={styles.genderTriangle} fill='#bbb' color='#bbb'/>
-                <div className={styles.genderList}>
-                    <p>Female</p>
-                    <p>Male</p>
-                    <p>Rather not say</p>
-                    <p>Custom</p>
-                </div>
+
             </div>
 
-            <p className={styles.next} onClick={() => router.push('/frontend/google-create-a-account/basic-information')}>Next</p>
+            <p className={styles.next}
+                onClick={() => router.push
+                    ('/frontend/google-create-a-account/basic-information/choose-how-you-will-sign-in')}
+            >
+                Next
+            </p>
             <Link href='#' className={styles.why}>Why we ask for birthday and gender</Link>
             <section className={styles.bottom}>
                 <div className={styles.language}>
@@ -95,11 +120,19 @@ const BasicInformation = () => {
             <section className={styles.basicInfoForeGround} ref={foreGround}
                 onClick={(e) => closeForeGround(e)}
             >
+
                 <div className={styles.monthList} ref={monthList}>
                     {months.map(month => <p key={month}
                         onClick={() => setBirthDate(prev => ({ ...prev, month }))}
                     >{month}</p>)}
                 </div>
+
+                <div className={styles.genderList} ref={genderList}>
+                    {googleGenderValues.map(value => <p
+                        onClick={() => setGenderValue(value)}
+                    >{value}</p>)}
+                </div>
+
             </section>
         </div>
     );
