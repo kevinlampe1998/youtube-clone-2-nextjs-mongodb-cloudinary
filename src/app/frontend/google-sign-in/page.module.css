@@ -105,6 +105,7 @@
     justify-content: center;
     transform: translate(-11px, 0);
     display: none;
+    cursor: pointer;
 }
 
 .createAccountMenu > p {

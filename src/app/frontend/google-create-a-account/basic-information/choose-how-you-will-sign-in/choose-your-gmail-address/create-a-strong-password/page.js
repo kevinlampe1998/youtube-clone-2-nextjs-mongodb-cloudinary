@@ -1,11 +1,11 @@
 'use client';
 
 import styles from './page.module.css';
-import { Triangle } from 'lucide-react';
+import { Check, Triangle } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-const ChooseYourGmailAddress = () => {
+const CreateAStrongPassword = () => {
     const router = useRouter();
     
     return (
@@ -18,42 +18,21 @@ const ChooseYourGmailAddress = () => {
                         height='52'
                         alt="Amazon header logo"
                 />
-                <h1>Choose your Gmail address</h1>
-                <h2>Pick a Gmail address or create your own</h2>
-
-                <div className={styles.radioButton}>
-
-                    <div><span></span></div>
-
-                    <p>placeholder@gmail.com</p>
-
-                </div>
-
-                <div className={styles.radioButton}>
-
-                    <div><span></span></div>
-
-                    <p>placeholder2@gmail.com</p>
-
-                </div>
-
-                <div className={styles.radioButton}>
-
-                    <div><span></span></div>
-
-                    <p>Create your own Gmail address</p>
-
-                </div>
+                <h1>Create a strong password</h1>
+                <h2>Create a strong password with a mix of letters, numbers and</h2>
+                <h2>symbols</h2>
 
             </section>
 
-            <section className={styles.hidden}>
-                <div className={styles.email}>
-                    <input className={styles.emailOrPhone} placeholder='Create a Gmail address'/>
-                    <span>@gmail.com</span>
+            <input className={styles.email} placeholder='Password'/>
+            <input className={styles.email} placeholder='Confirm'/>
+            
+            <div className={styles.showPassword}>
+                <div className={styles.check}>
+                    <Check size={15}/>
                 </div>
-                <p>You can use letters, numbers & periods</p>
-            </section>
+                <span>Show password</span>
+            </div>
 
             <section className={styles.navigation}>
                 <p className={styles.back}>
@@ -82,4 +61,4 @@ const ChooseYourGmailAddress = () => {
     );
 };
 
-export default ChooseYourGmailAddress;
+export default CreateAStrongPassword;

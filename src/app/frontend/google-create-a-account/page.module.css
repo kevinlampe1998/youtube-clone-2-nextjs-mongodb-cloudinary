@@ -68,6 +68,7 @@
     position: absolute;
     right: 23px;
     margin-top: 56px;
+    cursor: pointer;
 }
 
 .bottom {
