@@ -144,6 +144,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background: #acc7f4;
+    background: #0e0e0e;
+}
+
+.check > svg {
+    display: none;
+    color: #0e0e0e;
+    stroke-width: 4;
 }
 
 .navigation {

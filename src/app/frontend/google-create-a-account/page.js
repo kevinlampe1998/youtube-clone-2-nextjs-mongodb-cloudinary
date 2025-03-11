@@ -1,12 +1,29 @@
 'use client';
 
 import styles from './page.module.css';
-import { Triangle } from 'lucide-react';
+import { Triangle, CircleAlert } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useContext, useEffect, useRef } from 'react';
+import { Context } from '@/components/context-provider/context-provider';
+import next from 'next';
 
 const CreateAGoogleAccount = () => {
     const router = useRouter();
+    const { clientDB, dispatch } = useContext(Context);
+    const errorMessage = useRef();
+
+    useEffect(() => {
+        console.log('clientDB', clientDB);
+    }, [clientDB]);
+
+    const nextPage = () => {
+        if ( clientDB.registration.firstName !== '' ) {
+            router.push('/frontend/google-create-a-account/basic-information')
+        } else {
+            errorMessage.current.style.display = 'flex';
+        }
+    };
 
     return (
         <div className={styles.googleCreateAccount}>
@@ -19,10 +36,37 @@ const CreateAGoogleAccount = () => {
             />
             <h1>Create a Google Account</h1>
             <h2>Enter your name</h2>
-            <input className={styles.firstName} placeholder='First name'/>
-            <input className={styles.lastName} placeholder='Last name (optional)'/>
+            <input className={styles.firstName} placeholder='First name'
+                onChange={(event) => 
+                    dispatch({
+                        type: 'changeRegistrationFirstLevel',
+                        payload: {
+                            registrationCategory: 'firstName',
+                            registrationValue: event.target.value
+                        }
+                    })
+                }
+                value={clientDB.registration.firstName}
+            />
+            <input className={styles.lastName} placeholder='Last name (optional)'
+                onChange={(event) => 
+                    dispatch({
+                        type: 'changeRegistrationFirstLevel',
+                        payload: {
+                            registrationCategory: 'lastName',
+                            registrationValue: event.target.value
+                        }
+                    })
+                }
+                value={clientDB.registration.lastName}
+            />
 
-            <p className={styles.next} onClick={() => router.push('/frontend/google-create-a-account/basic-information')}>Next</p>
+            <div className={styles.errorMessage} ref={errorMessage}>
+                <CircleAlert size={18}/>
+                <p>Enter first name</p>
+            </div>
+
+            <p className={styles.next} onClick={nextPage}>Next</p>
             <section className={styles.bottom}>
                 <div className={styles.language}>
                     <p>English (United States) </p>

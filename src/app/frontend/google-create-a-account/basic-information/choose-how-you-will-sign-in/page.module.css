@@ -10,6 +10,10 @@
     padding-right: 25px;
 }
 
+.scoreThrough {
+    text-decoration: line-through;
+}
+
 .upper {
     padding-left: 24px;
 }
@@ -62,6 +66,7 @@
     height: 10px;
     width: 10px;
     border-radius: 50%;
+    display: none;
 }
 
 .next {
@@ -90,14 +95,14 @@
     margin-bottom: 3px;
 }
 
-.remark div {
+.remark a {
     color: #acc7f4;
     font-weight: bold;
     display: inline;
+    text-decoration: none;
 }
 
 .bottom {
-    /* border: 1px solid #fff; */
     width: 100vw;
     position: fixed;
     bottom: 18px;

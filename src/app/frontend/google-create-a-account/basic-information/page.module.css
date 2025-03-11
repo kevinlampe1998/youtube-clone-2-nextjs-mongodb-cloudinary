@@ -235,3 +235,19 @@
     height: 100vh;
     width: 100vw;
 }
+
+.errorMessage {
+    color: #f1b8b6;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 5px;
+    margin-left: 5px;
+    display: none;
+}
+
+.errorMessage > svg {
+    fill: #f1b8b6;
+    color: #0e0e0e;
+}

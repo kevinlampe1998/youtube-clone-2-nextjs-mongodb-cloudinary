@@ -1,0 +1,40 @@
+.somethingWentWrong {
+    background: #0e0e0e;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    font-weight: normal;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+    padding-right: 25px;
+    color: #eee;
+}
+
+.upper {
+    padding-left: 24px;
+}
+
+.googleGRainbowLogo {
+    margin-top: 25px;
+}
+
+.upper h1 {
+    font-weight: normal;
+    font-size: 32px;
+    margin-top: 17px;
+}
+
+.upper h2 {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.upper h2:nth-of-type(1) {
+    margin-top: 21px;
+}
+
+.upper h2:nth-of-type(2) {
+    margin-top: 5px;
+    margin-bottom: 36px;
+}

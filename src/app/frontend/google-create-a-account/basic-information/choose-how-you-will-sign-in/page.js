@@ -4,9 +4,45 @@ import styles from './page.module.css';
 import { Triangle } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { useRef } from 'react';
 
 const ChooseYouWillSignIn = () => {
     const router = useRouter();
+    const createARef = useRef();
+    const useYourRef = useRef();
+    
+    const createAToggle = () => {
+
+        window.getComputedStyle(useYourRef.current)
+            .getPropertyValue('display') === 'block' &&
+                (useYourRef.current.style.display = 'none');
+
+        window.getComputedStyle(createARef.current)
+            .getPropertyValue('display') === 'none' ?
+                (createARef.current.style.display = 'block') :
+                (createARef.current.style.display = 'none');
+    };
+
+    const useYourToggle = (event) => {
+
+        window.getComputedStyle(createARef.current)
+            .getPropertyValue('display') === 'block' &&
+                (createARef.current.style.display = 'none');
+
+        window.getComputedStyle(useYourRef.current)
+            .getPropertyValue('display') === 'none' ?
+                (useYourRef.current.style.display = 'block') :
+                (useYourRef.current.style.display = 'none');
+    };
+
+    const nextPage = () => {
+        if (window.getComputedStyle(createARef.current)
+            .getPropertyValue('display') === 'block') {
+                router.push
+                    ('/frontend/google-create-a-account/basic-information/choose-how-you-will-sign-in/choose-your-gmail-address');
+        }
+    };
 
     return (
         <div className={styles.choose}>
@@ -33,7 +69,9 @@ const ChooseYouWillSignIn = () => {
 
                     <p>Create a Gmail address</p>
 
-                    <div><span></span></div>
+                    <div
+                        onClick={(event) => createAToggle(event)}
+                    ><span ref={createARef}></span></div>
 
                 </div>
 
@@ -47,21 +85,24 @@ const ChooseYouWillSignIn = () => {
                         alt="Amazon header logo"
                     />
 
-                    <p>Use your email address</p>
+                    <p className={styles.scoreThrough}>Use your email address</p>
 
-                    <div><span></span></div>
+                    <div
+                        onClick={(event) => useYourToggle(event)}
+                    ><span ref={useYourRef}></span></div>
 
                 </div>
 
                 <div className={styles.remark}>
                     <p>You can create an email with another provider, and use that email to</p>
-                    <p>create a Google Account. <div>Learn more about creating an account</div></p>
-                    <div>with another provider</div>
+                    <p>create a Google Account. <Link href='#'>Learn more about creating an account</Link></p>
+                    <Link href='#'>with another provider</Link>
                 </div>
 
                 <p className={styles.next}
-                    onClick={() => router.push
-                        ('/frontend/google-create-a-account/basic-information/choose-how-you-will-sign-in/choose-your-gmail-address')}
+                    // onClick={() => router.push
+                    //     ('/frontend/google-create-a-account/basic-information/choose-how-you-will-sign-in/choose-your-gmail-address')}
+                    onClick={nextPage}
                 >
                     Next
                 </p>
