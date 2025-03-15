@@ -92,6 +92,8 @@ const ChooseYourGmailAddress = () => {
 
         const encodedEmailAddress = encodeURIComponent(clientDB.registration.emailAddress);
 
+        console.log('BASE_URL', BASE_URL);
+
         const res = await fetch(`${BASE_URL}/backend/users/single/check-if-exists/${encodedEmailAddress}`);
         const data = await res.json();
 
