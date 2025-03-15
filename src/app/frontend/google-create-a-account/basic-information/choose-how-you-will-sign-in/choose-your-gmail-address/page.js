@@ -1,12 +1,13 @@
 'use client';
 
 import styles from './page.module.css';
-import { Triangle } from 'lucide-react';
+import { Triangle, CircleAlert } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useRef, useContext, useEffect, useState } from 'react';
 import { getDisplay, idSelected } from '@/lib/shortcuts';
 import { Context } from '@/components/context-provider/context-provider';
+import BASE_URL from '@/lib/base-url';
 
 const ChooseYourGmailAddress = () => {
     const router = useRouter();
@@ -16,6 +17,12 @@ const ChooseYourGmailAddress = () => {
     const hiddenRef = useRef();
     const { clientDB, dispatch } = useContext(Context);
     const [ emailInput, setEmailInput ] = useState('');
+
+    const lettersNumbersPeriods = useRef();
+    const chooseAGmailAddress = useRef();
+    const enterAEmailAddress = useRef();
+    const isTaken = useRef();
+    const between8And30Char = useRef();
 
     useEffect(() => {
         console.log('chooseYourGmailAddress: clientDB.registration', clientDB.registration);
@@ -62,11 +69,34 @@ const ChooseYourGmailAddress = () => {
             hiddenRef.current.style.display = 'none';
     };
 
-    const createEmailOnChange = (event) => {
+    const nextPage = async () => {
 
-    };
+        const errorMessages = [ lettersNumbersPeriods, between8And30Char,
+            isTaken, enterAEmailAddress, chooseAGmailAddress ];
 
-    const nextPage = () => {
+        const handleErrorMessages = (currentSituation) => {
+            errorMessages.forEach(message =>
+                message.current.style.display = 'none' );
+
+            currentSituation.current.style.display = 'flex';
+        };
+
+        if ( [example1, example2, createYourself].every(btn =>
+                getDisplay(btn.current) === 'none')
+        ) return handleErrorMessages(chooseAGmailAddress);
+
+        if (emailInput === '') return handleErrorMessages(enterAEmailAddress);
+    
+        if (emailInput.length < 8 || emailInput.length > 30)
+            return handleErrorMessages(between8And30Char);
+
+        const encodedEmailAddress = encodeURIComponent(clientDB.registration.emailAddress);
+
+        const res = await fetch(`${BASE_URL}/backend/users/single/check-if-exists/${encodedEmailAddress}`);
+        const data = await res.json();
+
+        if (!data.success) return handleErrorMessages(isTaken);
+
         getDisplay(createYourself.current) === 'block' && router.push
             ('/frontend/google-create-a-account/basic-information/choose-how-you-will-sign-in/choose-your-gmail-address/create-a-strong-password')
     };
@@ -125,8 +155,28 @@ const ChooseYourGmailAddress = () => {
                     />
                     <span>@gmail.com</span>
                 </div>
-                <p>You can use letters, numbers & periods</p>
+                <p ref={lettersNumbersPeriods}>You can use letters, numbers & periods</p>
             </section>
+
+            <div className={styles.errorMessage} ref={chooseAGmailAddress}>
+                <CircleAlert size={18}/>
+                <p>Choose a Gmail address</p>
+            </div>
+
+            <div className={styles.errorMessage} ref={enterAEmailAddress}>
+                <CircleAlert size={18}/>
+                <p>Enter a Gmail address</p>
+            </div>
+
+            <div className={styles.errorMessage} ref={between8And30Char}>
+                <CircleAlert size={18}/>
+                <p>Sorry, your username must be between 8 and 30 characters long.</p>
+            </div>
+
+            <div className={styles.errorMessage} ref={isTaken}>
+                <CircleAlert size={18}/>
+                <p>That username is taken. Try another.</p>
+            </div>
 
             <section className={styles.navigation}>
                 <p className={styles.back}>

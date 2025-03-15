@@ -1,12 +1,13 @@
 'use client';
 
 import styles from './page.module.css';
-import { Check, Triangle } from 'lucide-react';
+import { Check, Triangle, CircleAlert } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useContext, useEffect, useState, useRef } from 'react';
 import { Context } from '@/components/context-provider/context-provider';
 import { getDisplay } from '@/lib/shortcuts';
+import BASE_URL from '@/lib/base-url';
 
 const CreateAStrongPassword = () => {
     const router = useRouter();
@@ -16,9 +17,14 @@ const CreateAStrongPassword = () => {
     const [ inputType, setInputType ] = useState('password');
     const [ checkBGColor, setCheckBGColor ] = useState('#0e0e0e');
 
-    useEffect(() => {
-        console.log('CreateAStrongPassword: clientDB.registration', clientDB.registration);
-    }, [clientDB]);
+    const enterAPassword = useRef();
+    const use8charOrMore = useRef();
+    const confirmYourPassword = useRef();
+    const didNotMatch = useRef();
+
+    // useEffect(() => {
+    //     console.log('CreateAStrongPassword: clientDB.registration', clientDB.registration);
+    // }, [clientDB]);
 
     const togglePasswordVisilibity = () => {
         getDisplay(check.current) === 'block' ? check.current.style.display = 'none' :
@@ -34,21 +40,43 @@ const CreateAStrongPassword = () => {
         const password = document.querySelector(`#password`).value;
         const confirm = document.querySelector(`#confirm`).value;
 
-        alert(`${password} ${confirm}`);
+        console.log(`${password} ${confirm}`);
+
+        const handleErrors = (currentMessage) => {
+            [didNotMatch, use8charOrMore, confirmYourPassword, enterAPassword]
+                .forEach(message => message.current.style.display = 'none');
+            currentMessage.current.style.display = 'flex';
+        };
+
+        if (password === '') return handleErrors(enterAPassword);
+
+        if (password.length < 8) return handleErrors(use8charOrMore);
+
+        if (password !== '' && confirm === '')
+            return handleErrors(confirmYourPassword);
 
         if (password === confirm) {
-            alert('same password');
             dispatch({ type: 'changeRegistrationFirstLevel', payload: {
                 registrationCategory: 'password',
                 registrationValue: password
             } });
-        }
+        } else return handleErrors(didNotMatch);
+    };
+    
+    const saveUser = async () => {
 
+        const res = await fetch(`${BASE_URL}/backend/users/single/create`, { method: 'POST',
+            headers: {'content-type': 'application/json'},
+            body: JSON.stringify(clientDB.registration)
+        });
+
+        const data = await res.json();
+
+        console.log('data', data);
     };
 
     const completeRegistration = () => {
         if (
-    
                 clientDB.registration.firstName !== '' &&
                 clientDB.registration.birthDate.month !== '' &&
                 clientDB.registration.birthDate.day > 0 &&
@@ -58,25 +86,15 @@ const CreateAStrongPassword = () => {
                 clientDB.registration.gender !== '' &&
                 clientDB.registration.emailAddress !== '' &&
                 clientDB.registration.password !== ''
-    
         ) {
-    
-            alert('registration successfully');
-            alert('completeRegistration function: clientDB', clientDB);
-    
-            // router.push
-            //     ('/frontend/google-create-a-account/basic-information/choose-how-you-will-sign-in/choose-your-gmail-address/create-a-strong-password')
+            saveUser();
         } else {
-            alert('Something went wrong! CreateAStrongPassword');
+            router.push('/frontend/google-something-went-wrong');
         }
     };
     
     useEffect(() => {
-
-        console.log('useEffect executed!');
-
         clientDB.registration.password !== '' && completeRegistration();
-    
     }, [clientDB]);
     
     return (
@@ -101,6 +119,26 @@ const CreateAStrongPassword = () => {
             <input className={styles.email} placeholder='Confirm'
                 type={inputType} id='confirm'
             />
+
+            <div className={styles.errorMessage} ref={enterAPassword}>
+                <CircleAlert size={18}/>
+                <p>Enter a password</p>
+            </div>
+
+            <div className={styles.errorMessage} ref={use8charOrMore}>
+                <CircleAlert size={18}/>
+                <p>Use 8 characters or more for your password</p>
+            </div>
+
+            <div className={styles.errorMessage} ref={confirmYourPassword}>
+                <CircleAlert size={18}/>
+                <p>Confirm your password</p>
+            </div>
+
+            <div className={styles.errorMessage} ref={didNotMatch}>
+                <CircleAlert size={18}/>
+                <p>Those passwords didn't match. Try again.</p>
+            </div>
             
             <div className={styles.showPassword} onClick={togglePasswordVisilibity}>
                 <div className={styles.check} ref={checkContainer}
