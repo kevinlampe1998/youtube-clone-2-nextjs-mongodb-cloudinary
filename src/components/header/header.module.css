@@ -7,6 +7,10 @@
     justify-content: center;
 } */
 
+.header > section > * {
+    cursor: pointer;
+}
+
 .hamburgerLogo, .searchLogo, .micLogo {
     width: 40px;
     height: 40px;
@@ -63,7 +67,12 @@
     position: absolute;
 }
 
-.loggedHeader > div:nth-of-type(2) {
+.loggedHeader {
+    display: flex;
+    align-items: center;
+}
+
+.profileLogo {
     font-weight: normal;
     background: #8c6e63;
     height: 32px;
@@ -76,10 +85,10 @@
     right: 38px;
 }
 
-.loggedHeader div:nth-of-type(2) > p {
-    font-size: 1.2rem;
+.profileLogo > p {
+    font-size: 16px;
     font-family: sans-serif;
-    transform: translate(1px, 1px);
+    /* transform: translate(1px, 1px); */
 }
 
 .hamburgerLogo {
@@ -117,6 +126,9 @@
 
 .searchLogo {
     
+}
+
+.profileLogo {
 }
 
 /* ---------- unlogged -------------------------------------------- */

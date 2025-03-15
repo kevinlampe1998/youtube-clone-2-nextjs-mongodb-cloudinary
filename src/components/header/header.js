@@ -3,10 +3,45 @@ import styles from './header.module.css';
 import { Bell, Menu, Plus, Search, Youtube, EllipsisVertical, CircleUser } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import { Context } from '../context-provider/context-provider';
+import BASE_URL from '@/lib/base-url';
+import { idSelected } from '@/lib/shortcuts';
 
 const Header = () => {
     const [ logged, setLogged ] = useState(false);
+    const { clientDB, dispatch } = useContext(Context);
+
+    useEffect(() => {
+        console.log('header: clientDB.user', clientDB.user);
+        clientDB.user && setLogged(true);
+    }, [clientDB.user]);
+
+    const checkCookieAtStart = async () => {
+        const res = await fetch(`${BASE_URL}/backend/users/single/check-cookie`, {
+            credentials: 'include'
+        });
+
+        const data = await res.json();
+        
+        console.log('data', data);
+        
+        data.success && dispatch({ type: 'setUser', payload: data.user });
+    };
+
+    useEffect(() => {
+        checkCookieAtStart();
+    }, []);
+
+    const openForeGround = () => {
+        const foreGround = idSelected('foreground');
+        const profileLogoClicked = idSelected('profile-logo-clicked');
+
+        console.log('foreGround', foreGround);
+
+        foreGround.style.display = 'flex';
+        profileLogoClicked.style.display = 'block';
+    };
 
     return (
         <header className={styles.header}>
@@ -39,7 +74,7 @@ const Header = () => {
                             className={styles.micLogo}
                         >
                             <Image
-                                    src='/svg/microphone-svgrepo-com.svg'
+                                    src='/svg/header/microphone-svgrepo-com.svg'
                                     width='20'
                                     height='20'
                                     alt="Amazon header logo"
@@ -50,19 +85,21 @@ const Header = () => {
                                 <div></div>
                                 <div></div>
                             </div>
-                            <p>Erstellen</p>
+                            <p>Create</p>
                         </div>
                         <Link href='#'
                             className={styles.bellLogo}
                         >
                             <Image
-                                    src='/svg/bell-svgrepo-com.svg'
+                                    src='/svg/header/bell-svgrepo-com.svg'
                                     width='23'
                                     height='23'
                                     alt="Amazon header logo"
                             />
                         </Link>
-                        <div className={styles.profileLogo}>
+                        <div className={styles.profileLogo}
+                            onClick={openForeGround}
+                        >
                             <p>K</p>
                         </div>
                     </section>
@@ -98,7 +135,7 @@ const Header = () => {
                                 className={styles.micLogo}
                             >
                                 <Image
-                                        src='/svg/microphone-svgrepo-com.svg'
+                                        src='/svg/header/microphone-svgrepo-com.svg'
                                         width='19'
                                         height='19'
                                         alt="Amazon header logo"

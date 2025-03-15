@@ -7,6 +7,9 @@ const reducer = (state, action) => {
 
     console.log('reducer: action', action);
 
+    if (action.type === 'setUser') console.log('reducer: User logged in');
+    if (action.type === 'setUser') return { ...state, user: action.payload };
+   
     if (action.type === 'changeFirstName') {
         return { ...state, registration: {
             ...state.registration, firstName: action.payload

@@ -22,10 +22,6 @@ const CreateAStrongPassword = () => {
     const confirmYourPassword = useRef();
     const didNotMatch = useRef();
 
-    // useEffect(() => {
-    //     console.log('CreateAStrongPassword: clientDB.registration', clientDB.registration);
-    // }, [clientDB]);
-
     const togglePasswordVisilibity = () => {
         getDisplay(check.current) === 'block' ? check.current.style.display = 'none' :
             check.current.style.display = 'block';
@@ -34,68 +30,57 @@ const CreateAStrongPassword = () => {
         checkBGColor === '#0e0e0e' ? setCheckBGColor('#acc7f4')
             : setCheckBGColor('#0e0e0e');
     };
-
-    const dispatchPassword = () => {
-        const registration = clientDB.registration;
+    
+    const dispatchPassword = async () => {
         const password = document.querySelector(`#password`).value;
         const confirm = document.querySelector(`#confirm`).value;
-
-        console.log(`${password} ${confirm}`);
 
         const handleErrors = (currentMessage) => {
             [didNotMatch, use8charOrMore, confirmYourPassword, enterAPassword]
                 .forEach(message => message.current.style.display = 'none');
             currentMessage.current.style.display = 'flex';
         };
-
+        
         if (password === '') return handleErrors(enterAPassword);
-
+        
         if (password.length < 8) return handleErrors(use8charOrMore);
-
+        
         if (password !== '' && confirm === '')
             return handleErrors(confirmYourPassword);
-
+        
         if (password === confirm) {
-            dispatch({ type: 'changeRegistrationFirstLevel', payload: {
-                registrationCategory: 'password',
-                registrationValue: password
-            } });
+            
+            if (
+                    clientDB.registration.firstName !== '' &&
+                    clientDB.registration.birthDate.month !== '' &&
+                    clientDB.registration.birthDate.day > 0 &&
+                    clientDB.registration.birthDate.day < 32 &&
+                    clientDB.registration.birthDate.year > 1850 &&
+                    clientDB.registration.birthDate.year < 2100 &&
+                    clientDB.registration.gender !== '' &&
+                    clientDB.registration.emailAddress !== '' &&
+                    password !== ''
+            ) {
+                const res = await fetch(`${BASE_URL}/backend/users/single/create`, { method: 'POST',
+                    headers: {'content-type': 'application/json'},
+                    body: JSON.stringify({ ...clientDB.registration, password })
+                });
+            
+                const data = await res.json();
+            
+                console.log('data', data);
+                
+                if (data.success)
+                    dispatch({ type: 'setUser', payload: data.savedUser });
+
+            } else router.push('/frontend/google-something-went-wrong');
+
         } else return handleErrors(didNotMatch);
     };
     
-    const saveUser = async () => {
-
-        const res = await fetch(`${BASE_URL}/backend/users/single/create`, { method: 'POST',
-            headers: {'content-type': 'application/json'},
-            body: JSON.stringify(clientDB.registration)
-        });
-
-        const data = await res.json();
-
-        console.log('data', data);
-    };
-
-    const completeRegistration = () => {
-        if (
-                clientDB.registration.firstName !== '' &&
-                clientDB.registration.birthDate.month !== '' &&
-                clientDB.registration.birthDate.day > 0 &&
-                clientDB.registration.birthDate.day < 32 &&
-                clientDB.registration.birthDate.year > 1850 &&
-                clientDB.registration.birthDate.year < 2100 &&
-                clientDB.registration.gender !== '' &&
-                clientDB.registration.emailAddress !== '' &&
-                clientDB.registration.password !== ''
-        ) {
-            saveUser();
-        } else {
-            router.push('/frontend/google-something-went-wrong');
-        }
-    };
-    
     useEffect(() => {
-        clientDB.registration.password !== '' && completeRegistration();
-    }, [clientDB]);
+        clientDB.user && router.push('/');
+    }, [clientDB.user]);
     
     return (
         <div className={styles.choose}>
