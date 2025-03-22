@@ -118,6 +118,7 @@
 .bellLogo {
     position: absolute;
     right: 84px;
+    top: 16px;
 }
 
 .bellLogo img {
@@ -125,7 +126,7 @@
 }
 
 .searchLogo {
-    
+    color: #eee;
 }
 
 .profileLogo {

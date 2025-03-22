@@ -117,6 +117,10 @@
     background: #444;
 }
 
+.createAccountMenu > p:not(:nth-of-type(1)) {
+    text-decoration: line-through;
+}
+
 .createAccount, .next {
     background: none;
     border: none;
@@ -181,4 +185,20 @@
 
 .bottom > div:nth-of-type(1):hover, .bottom > div:nth-of-type(2) > p:hover {
     background: #222;
+}
+
+.errorMessage {
+    color: #f1b8b6;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 5px;
+    margin-left: 5px;
+    display: none;
+}
+
+.errorMessage > svg {
+    fill: #f1b8b6;
+    color: #0e0e0e;
 }

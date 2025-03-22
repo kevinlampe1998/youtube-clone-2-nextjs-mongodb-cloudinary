@@ -9,15 +9,18 @@ import Image from 'next/image';
 import { letters, numbers } from '@/lib/chars';
 import BASE_URL from '@/lib/base-url';
 import { idSelected } from '@/lib/shortcuts';
+import Img from '../image/image';
+import { useRouter } from 'next/navigation';
 
 const foreGroundChildrenIds = [
-    'create',
-    'profile-logo-clicked'
+    'profile-logo-clicked',
+    'create-button-clicked'
 ];
 
 const ForeGround = () => {
     const { clientDB, dispatch } = useContext(Context);
     const [ profileId, setProfileId ] = useState();
+    const router = useRouter();
 
     useEffect(() => {
         console.log('foreground clientDB', clientDB);
@@ -57,7 +60,6 @@ const ForeGround = () => {
     };
 
     const closeForeGround = (event) => {
-        // console.log('closeForeGround event.target', event.target);
         console.log('closeForeGround event.target.id', event.target.id);
 
         if (event.target.id === 'foreground') {
@@ -75,15 +77,25 @@ const ForeGround = () => {
 
 {/* ---- create -------------------------------------------------------------- */}
 
-            <section className={styles.create} id='create'>
-                <div>
-                    <SquarePlay size={22}/>
-                    <p>Video hochladen</p>
+            <section className={styles.create} id='create-button-clicked'>
+                <div onClick={() => router.
+                    push('/frontend/studio')}
+                >
+                    <Img props={[ '/svg/foreground/create/upload-video.png',
+                        28, 30, 'create-post' ]} />
+                    <p>Upload video</p>
                 </div>
                 <div>
-                    <Radio size={19}/>
-                    <p>Livestream starten</p>
+                    <Img props={[ '/svg/foreground/create/go-live.png',
+                        28, 30, 'create-post' ]} />
+                    <p>Go live</p>
                 </div>
+                <div>
+                    <Img props={[ '/svg/foreground/create/create-post.png',
+                        28, 30, 'create-post' ]} />
+                    <p>Create post</p>
+                </div>
+
             </section>
 
 {/* ---- profileLogoClicked -------------------------------------------------------------- */}

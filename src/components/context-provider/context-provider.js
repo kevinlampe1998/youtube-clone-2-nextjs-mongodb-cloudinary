@@ -2,10 +2,16 @@
 
 import { useReducer, useEffect } from "react";
 import { createContext } from "react";
+import BASE_URL from "@/lib/base-url";
 
 const reducer = (state, action) => {
 
     console.log('reducer: action', action);
+
+    if (action.type === 'setSignIn') {
+        return { ...state, signIn: { ...state.signIn,
+            [action.payload.category]: action.payload.value }};
+    }
 
     if (action.type === 'setUser') console.log('reducer: User logged in');
     if (action.type === 'setUser') return { ...state, user: action.payload };
@@ -49,6 +55,10 @@ export const Context = createContext();
 const ContextProvider = ({ children }) => {
     const [ clientDB, dispatch ] = useReducer(reducer, {
         user: null,
+        signIn: {
+            recognition: '',
+            password: ''
+        },
         registration: {
             firstName: '',
             lastName: '',
@@ -62,6 +72,26 @@ const ContextProvider = ({ children }) => {
             password: '',
         }
     });
+
+    const cookieChecker = async () => {
+        const res = await fetch(`${BASE_URL}/backend/users/single/check-cookie`);
+        const data = await res.json();
+
+        console.log(' cookieChecker data', data);
+
+        data.success && dispatch({ type: 'setUser', payload: data.user });
+    };
+
+    useEffect(() => {
+        cookieChecker();
+
+        
+
+    }, []);
+
+    useEffect(() => {
+        console.log('ContextProvider clientDB', clientDB);
+    }, [clientDB]);
 
     return (
         <Context.Provider value={{ clientDB, dispatch }}>

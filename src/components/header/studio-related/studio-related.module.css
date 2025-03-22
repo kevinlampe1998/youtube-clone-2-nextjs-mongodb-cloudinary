@@ -1,0 +1,226 @@
+.loggedHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid blue;
+    height: 56px;
+    overflow: hidden;
+    position: relative;
+}
+
+.section1, .section2, .section3 {
+    border: 1px solid #ddd;
+    height: 100%;
+}
+
+/* ---- icons ---------- */
+
+.hamburgerLogo, .searchLogo, .micLogo, .ellipsisVertical, .bellLogo {
+    background: #333;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ---- section1 ------------------------------------------ */
+
+.section1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 185px;
+}
+
+.hamburgerLogo {
+    margin-left: 8px;
+}
+
+.hamburgerLogo > span {
+    height: 20px;
+    width: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+}
+
+.hamburgerLogo > span > span {
+    height: 1px;
+    width: 18px;
+    background: #fff;
+}
+
+.hamburgerLogo > span > span:nth-of-type(1) {
+    margin-top: 3px;
+}
+
+/* ---- section2 ------------------------------------------ */
+
+.section2 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+    /* position: absolute;
+    right: 220px; */
+    min-width: 80px;
+    /* gap: 3px; */
+    /* padding: 3px; */
+}
+
+.searchBar {
+    display: flex;
+    align-items: center;
+}
+
+.searchBar input {
+    display: none;
+}
+
+/* ---- section3 ------------------------------------------ */
+
+.section3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 220px;
+}
+
+.create {
+    display: flex;
+    align-items: center;
+    background: #272727;
+    border-radius: 30px;
+    height: 36px;
+    width: 97px;
+}
+
+.create > p {
+    transform: translateX(9px);
+    font-size: 0.93rem;
+    font-weight: 600;
+}
+
+.plus {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(6px);
+}
+
+.plus > div:first-child {
+    transform: rotate(90deg);
+    position: absolute;
+}
+
+.plus > div {
+    height: 1px;
+    width: 17px;
+    background: #fff;
+}
+
+.bellLogo {
+    margin-right: 14px;
+}
+
+.profileLogo {
+    font-weight: normal;
+    background: #8c6e63;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* position: absolute;
+    right: 38px; */
+    margin-right: 35px;
+}
+
+.profileLogo > p {
+    font-size: 18px;
+    font-family: sans-serif;
+    /* transform: translate(1px, 1px); */
+}
+
+/* ---- media queries ------------------------------------------ */
+
+@media (min-width: 650px) {
+
+    /* ---- section1 --------------------------------------- */
+
+
+
+    /* ---- section2 --------------------------------------- */
+
+    .section2 {
+        justify-content: center;
+        position: relative;
+    }
+
+    .searchBar {
+        /* border-radius: 30px; */
+        height: 40px;
+        flex: 1;
+        margin-left: 60px;
+    }
+    
+    .searchBar input {
+        display: block;
+        height: 100%;
+        width: 100%;
+        margin-right: 118px;
+        background: #121212;
+        border: none;
+        border: 1px solid #333;
+        border-radius: 20px;
+        border-right: 2px solid #333;
+        padding: 5px;
+    }
+
+    .searchLogo {
+        /* background: #333;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center; */
+        position: absolute;
+        background: #222222;
+        right: 70px;
+        border: 1px solid #333;
+        border-radius: 0 20px 20px 0;
+        width: 65px;
+        color: #ddd;
+    }
+
+    .micLogo {
+        position: absolute;
+        right: 10px;
+    }
+    /* ---- section3 --------------------------------------- */
+
+    .section3 {
+        width: 244px;
+        padding-right: 10px;
+    }
+
+}
+
+@media (min-width: 1150px) {
+
+    .section2 {
+        flex: none;
+        width: 700px;
+    }
+    
+}

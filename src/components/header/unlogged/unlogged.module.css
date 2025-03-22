@@ -1,0 +1,184 @@
+.unlogged {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    border: 1px solid blue;
+    position: relative;
+}
+
+.section1, .section2, .section3 {
+    border: 1px solid #fff;
+    height: 100%;
+}
+
+/* ---- icons ---------- */
+
+.hamburgerLogo, .searchLogo, .micLogo, .ellipsisVertical {
+    background: #333;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ---- section1 ------------------------------------------------------------- */
+
+.section1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 185px;
+    overflow: hidden;
+}
+
+.hamburgerLogo {
+    margin-left: 8px;
+}
+
+.hamburgerLogo > span {
+    height: 20px;
+    width: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+}
+
+.hamburgerLogo > span > span:nth-of-type(1) {
+    margin-top: 3px;
+}
+
+.hamburgerLogo > span > span {
+    height: 1px;
+    width: 18px;
+    background: #fff;
+}
+
+/* ---- section2 ------------------------------------------------------------- */
+
+.section2 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* position: absolute;
+    right: 160px; */
+    min-width: 100px;
+    flex: 1;
+}
+
+.searchBar {
+    display: flex;
+    align-items: center;
+}
+
+.searchBar input {
+    display: none;
+}
+
+.micLogo {
+    margin-right: 3px;
+}
+
+.searchLogo {
+    margin-right: 3px;
+}
+
+/* ---- section3 ------------------------------------------------------------- */
+
+.section3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 160px;
+}
+
+.ellipsisVertical {
+    margin-top: 2px;
+    
+}
+
+.signInButton {
+    display: flex;
+    align-items: center;
+    border: 1px solid #555;
+    border-radius: 30px;
+    color: #ddd;
+    padding: 5px;
+    width: 100px;
+    margin-right: 20px;
+    text-decoration: none;
+    height: 37px;
+    padding-left: 8px;
+}
+
+.signInButton > p {
+    font-size: 14px;
+    margin-left: 7px;
+}
+
+/* ---- media queries ------------------------------------------------------------- */
+
+@media (min-width: 650px) {
+
+    .section2 {
+        justify-content: center;
+        position: relative;
+    }
+
+    .searchBar {
+        /* border-radius: 30px; */
+        height: 40px;
+        flex: 1;
+        margin-left: 80px;
+    }
+
+    .searchBar input {
+        display: block;
+        height: 100%;
+        width: 100%;
+        margin-right: 118px;
+        background: #121212;
+        border: none;
+        border: 1px solid #333;
+        border-radius: 20px;
+        border-right: 2px solid #333;
+        padding: 5px;
+        flex: 1;
+    }
+
+    .searchLogo {
+        /* background: #333;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center; */
+        position: absolute;
+        background: #222222;
+        right: 140px;
+        border: 1px solid #333;
+        border-radius: 0 20px 20px 0;
+        width: 65px;
+        color: #ddd;
+    }
+
+    .micLogo {
+        position: relative;
+        right: 90px;
+    }
+}
+
+@media (min-width: 1150px) {
+    
+        .section2 {
+        flex: none;
+        width: 830px;
+    }
+}

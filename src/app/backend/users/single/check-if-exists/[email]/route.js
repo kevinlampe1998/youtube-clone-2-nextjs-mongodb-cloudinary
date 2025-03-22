@@ -14,10 +14,10 @@ export const GET = async (req, { params }) => {
         console.log('foundEmail', foundEmail);
 
         const success = { message:
-            'This email address is available. You can use it.', success: 1 };
+            'This email address is unknown.', success: 1, existing: 0 };
 
         const error = { message:
-            'This email address is already taken. Please choose another one.', success: 0 };
+            'This email address is existing', success: 0, existing: 1 };
 
         const result = foundEmail ? error : success;
 
