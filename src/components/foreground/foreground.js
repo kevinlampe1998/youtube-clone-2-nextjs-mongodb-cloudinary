@@ -17,6 +17,13 @@ const foreGroundChildrenIds = [
     'create-button-clicked'
 ];
 
+export const closeForeGround = () => {
+    foreGroundChildrenIds.forEach(child =>
+        idSelected(child).style.display = 'none'
+    );
+    idSelected('foreground').style.display = 'none';
+};
+
 const ForeGround = () => {
     const { clientDB, dispatch } = useContext(Context);
     const [ profileId, setProfileId ] = useState();
@@ -59,27 +66,20 @@ const ForeGround = () => {
         data.success && location.reload();
     };
 
-    const closeForeGround = (event) => {
-        console.log('closeForeGround event.target.id', event.target.id);
-
-        if (event.target.id === 'foreground') {
-            foreGroundChildrenIds.forEach(child =>
-                idSelected(child).style.display = 'none'
-            );
-            idSelected('foreground').style.display = 'none';
-        }
-    };
+    const close = (event) => 
+        event.target.id === 'foreground' && closeForeGround();
+    
 
     return (
         <div className={styles.foreGround} id='foreground'
-            onClick={closeForeGround}
+            onClick={close}
         >
 
 {/* ---- create -------------------------------------------------------------- */}
 
             <section className={styles.create} id='create-button-clicked'>
-                <div onClick={() => router.
-                    push('/frontend/studio')}
+                <div onClick={() => (closeForeGround(),
+                    router.push('/frontend/studio'))}
                 >
                     <Img props={[ '/svg/foreground/create/upload-video.png',
                         28, 30, 'create-post' ]} />

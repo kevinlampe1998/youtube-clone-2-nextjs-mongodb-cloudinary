@@ -3,9 +3,10 @@
     align-items: center;
     justify-content: space-between;
     border: 1px solid blue;
-    height: 56px;
+    height: 67px;
     overflow: hidden;
     position: relative;
+    background: #282828;
 }
 
 .section1, .section2, .section3 {
@@ -59,6 +60,10 @@
     margin-top: 3px;
 }
 
+.youtubeStudioLogo {
+
+}
+
 /* ---- section2 ------------------------------------------ */
 
 .section2 {
@@ -82,13 +87,17 @@
     display: none;
 }
 
+.searchLogo {
+    color: #ddd;
+}
+
 /* ---- section3 ------------------------------------------ */
 
 .section3 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 220px;
+    width: 160px;
 }
 
 .create {
@@ -98,6 +107,8 @@
     border-radius: 30px;
     height: 36px;
     width: 97px;
+    border: 1px solid #555;
+    padding-left: 10px;
 }
 
 .create > p {
@@ -126,10 +137,6 @@
     background: #fff;
 }
 
-.bellLogo {
-    margin-right: 14px;
-}
-
 .profileLogo {
     font-weight: normal;
     background: #8c6e63;
@@ -141,7 +148,7 @@
     justify-content: center;
     /* position: absolute;
     right: 38px; */
-    margin-right: 35px;
+    margin-right: 15px;
 }
 
 .profileLogo > p {

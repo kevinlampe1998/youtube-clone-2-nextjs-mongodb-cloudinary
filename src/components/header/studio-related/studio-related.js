@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Search, EllipsisVertical, CircleUser } from 'lucide-react';
 // import BASE_URL from '@/lib/base-url';
 // import { idSelected } from '@/lib/shortcuts';
+import Img from '@/components/image/image';
 
 const StudioRelated = () => {
 
@@ -42,10 +43,10 @@ const StudioRelated = () => {
                 
                 </Link>
                 <Image
-                        className={styles.youtubeLogo}
-                        src='/logos/youtube-logo.png'
-                        width='130'
-                        height='50'
+                        className={styles.youtubeStudioLogo}
+                        src='/logos/youtube-studio-logo.png'
+                        width='110'
+                        height='35'
                         alt="Amazon header logo"
                         priority
                     />
@@ -60,25 +61,25 @@ const StudioRelated = () => {
                 <Link href='#'
                     className={styles.micLogo}
                 >
-                    <Image
-                            src='/svg/header/microphone-svgrepo-com.svg'
-                            width='20'
-                            height='20'
-                            alt="Amazon header logo"
-                    />
+                    <Img props={[ '/svg/header/studio/question-mark.png',
+                        28, 25, 'question-mark' ]}/>
                 </Link>
             </section>
             <section className={styles.section3}>
                 <div className={styles.create}
                     // onClick={createButtonClicked}
                 >
-                    <div className={styles.plus}>
+                    {/* <div className={styles.plus}>
                         <div></div>
                         <div></div>
-                    </div>
+                    </div> */}
+
+                    <Img props={[ '/svg/header/studio/camera-with-plus-in-it.png',
+                        20, 15, 'camera-with-plus-in-it' ]}/>
+
                     <p>Create</p>
                 </div>
-                <Link href='#'
+                {/* <Link href='#'
                     className={styles.bellLogo}
                 >
                     <Image
@@ -87,7 +88,7 @@ const StudioRelated = () => {
                             height='23'
                             alt="Amazon header logo"
                     />
-                </Link>
+                </Link> */}
                 <div className={styles.profileLogo}
                     // onClick={profileLogoClicked}
                 >
