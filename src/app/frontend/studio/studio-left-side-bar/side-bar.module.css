@@ -1,0 +1,67 @@
+.sideBar {
+    width: 70px;
+    height: 100vh;
+    background: #282828;
+    position: fixed;
+    left: 0;
+    top: 67px;
+    border-right: 1px solid #3e3e3e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.section1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 15px;
+}
+
+.section1 > p {
+    display: none;
+}
+
+.profileLogo {
+    font-weight: normal;
+    background: #8c6e63;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.profileLogo > p {
+    font-size: 18px;
+    font-family: sans-serif;
+}
+
+.section2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section2 > div, .section3 > div {
+    border: 1px solid blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+}
+
+.section2 > div > p, .section3 > div > p {
+    display: none;
+}
+
+.section3 {
+    /* background: blue; */
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    bottom: 67px;
+}

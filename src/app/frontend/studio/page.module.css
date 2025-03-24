@@ -1,0 +1,12 @@
+.studio {
+    display: flex;
+    min-height: 100vh;
+    background: #282828;
+    margin-top: 11px;
+}
+
+.studio > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

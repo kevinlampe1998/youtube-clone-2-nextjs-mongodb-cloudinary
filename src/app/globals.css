@@ -12,6 +12,10 @@ body {
   font-weight: bold;
 }
 
+main {
+  margin-top: 56px;
+}
+
 nextjs-portal {
   display: none;
 }

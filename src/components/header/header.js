@@ -6,6 +6,7 @@ import { useContext, useEffect } from "react";
 import { Context } from "../context-provider/context-provider";
 import StudioRelated from "./studio-related/studio-related";
 import { usePathname } from "next/navigation";
+import styles from './header.module.css';
 
 const Header = () => {
     const { clientDB, dispatch } = useContext(Context);
@@ -17,7 +18,7 @@ const Header = () => {
 
     return (
 
-        <div>
+        <div className={styles.header}>
             {
 
                 (clientDB.user && pathname === '/frontend/studio') ?
