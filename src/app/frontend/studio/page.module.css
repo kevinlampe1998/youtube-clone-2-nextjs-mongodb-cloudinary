@@ -1,12 +1,24 @@
 .studio {
     display: flex;
     min-height: 100vh;
-    background: #282828;
     margin-top: 11px;
+    position: relative;
 }
 
-.studio > div {
+.studio > div:nth-of-type(1) {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.studioMain {
+    margin-left: 70px;
+    background: #282828;
+    width: 100vw;
+}
+
+.currentPage {
+    padding-left: 70px;
+    background: #282828;
+    width: 100%;
 }

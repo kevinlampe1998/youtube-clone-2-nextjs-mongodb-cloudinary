@@ -1,0 +1,68 @@
+.upload {
+    width: 960px;
+    height: 685px;
+    background: #282828;
+    z-index: 20;
+    position: relative;
+    border-radius: 25px;
+    text-align: center;
+    font-weight: normal;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 26px 20px 15px;
+    border-bottom: 1px solid #444;
+}
+
+.top > h3 {
+    font-size: 19px;
+    margin-left: 5px;
+}
+
+.top > div:nth-of-type(1) {
+    display: flex;
+    gap: 18px;
+    margin-right: 10px;
+}
+
+.middle {
+    padding-top: 140px;
+}
+
+.middle > p:nth-of-type(1) {
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+.middle > p:nth-of-type(2) {
+    margin-top: 7px;
+    font-size: 12px;
+    color:  #999;
+}
+
+.middle button {
+    margin-top: 30px;
+    width: 100px;
+    height: 37px;
+    background: #fff;
+    font-weight: bold;
+    border-radius: 30px;
+    border: none;
+    font-size: 14px;
+}
+
+.bottom {
+    padding-top: 138px;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.bottom a {
+    color: #08d;
+    text-decoration: none;
+}

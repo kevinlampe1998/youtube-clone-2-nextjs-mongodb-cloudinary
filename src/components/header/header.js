@@ -12,13 +12,9 @@ const Header = () => {
     const { clientDB, dispatch } = useContext(Context);
     const pathname = usePathname();
 
-    useEffect(() => {
-        console.log('header pathname', pathname);
-    });
-
     return (
 
-        <div className={styles.header}>
+        <div className={styles.header} id="header">
             {
 
                 (clientDB.user && pathname === '/frontend/studio') ?

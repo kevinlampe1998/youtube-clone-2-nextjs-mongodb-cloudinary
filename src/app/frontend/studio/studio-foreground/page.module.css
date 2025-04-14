@@ -1,0 +1,56 @@
+.foreground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    height: 100vh;
+    width: 100vw;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.darkOverlay {
+    background: #000;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    z-index: 5;
+    opacity: 0.7;
+    display: none;
+}
+
+.create {
+    position: absolute;
+    height: 185px;
+    width: 185px;
+    top: 50px;
+    right: 50px;
+    border-radius: 20px;
+    background: #1f1f1f;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 50;
+}
+
+.button {
+    display: flex;
+    gap: 10px;
+    padding: 5px 15px;
+    padding-left: 25px;
+}
+
+.button:hover {
+    background: #111;
+}
+
+.button > p {
+    font-weight: lighter;
+    font-size: 15px;
+}
+
+.button:not(:nth-of-type(1)) {
+    text-decoration: line-through;
+}

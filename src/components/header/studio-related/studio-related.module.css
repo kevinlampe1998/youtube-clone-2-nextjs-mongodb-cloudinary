@@ -71,11 +71,7 @@
     align-items: center;
     justify-content: flex-end;
     flex: 1;
-    /* position: absolute;
-    right: 220px; */
     min-width: 80px;
-    /* gap: 3px; */
-    /* padding: 3px; */
 }
 
 .searchBar {
@@ -109,6 +105,7 @@
     width: 97px;
     border: 1px solid #555;
     padding-left: 10px;
+    cursor: pointer;
 }
 
 .create > p {
@@ -146,15 +143,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* position: absolute;
-    right: 38px; */
     margin-right: 15px;
 }
 
 .profileLogo > p {
     font-size: 18px;
     font-family: sans-serif;
-    /* transform: translate(1px, 1px); */
 }
 
 /* ---- media queries ------------------------------------------ */
@@ -173,7 +167,6 @@
     }
 
     .searchBar {
-        /* border-radius: 30px; */
         height: 40px;
         flex: 1;
         margin-left: 60px;
@@ -193,14 +186,6 @@
     }
 
     .searchLogo {
-        /* background: #333;
-        border-radius: 50%;
-        width: 35px;
-        height: 35px;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center; */
         position: absolute;
         background: #222222;
         right: 70px;

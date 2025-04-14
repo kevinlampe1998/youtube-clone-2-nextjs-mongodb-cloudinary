@@ -29,10 +29,6 @@ const ForeGround = () => {
     const [ profileId, setProfileId ] = useState();
     const router = useRouter();
 
-    useEffect(() => {
-        console.log('foreground clientDB', clientDB);
-    }, []);
-
     const createProfileId = () => {
         const id = [];
 
@@ -43,8 +39,6 @@ const ForeGround = () => {
         const randomId = id.map(charCase => charCase ?
             letters.lowercase[Math.floor(Math.random() * letters.lowercase.length)]
                 : numbers.digits[Math.floor(Math.random() * numbers.digits.length)]);
-
-        console.log('randomId', randomId);
 
         setProfileId(randomId);
     };
@@ -59,8 +53,6 @@ const ForeGround = () => {
         });
 
         const data = await res.json();
-        
-        console.log('data', data);
         
         data.success && dispatch({ type: 'setUser', payload: null });
         data.success && location.reload();

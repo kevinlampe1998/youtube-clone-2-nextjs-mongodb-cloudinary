@@ -6,14 +6,11 @@ import BASE_URL from "@/lib/base-url";
 
 const reducer = (state, action) => {
 
-    console.log('reducer: action', action);
-
     if (action.type === 'setSignIn') {
         return { ...state, signIn: { ...state.signIn,
             [action.payload.category]: action.payload.value }};
     }
 
-    if (action.type === 'setUser') console.log('reducer: User logged in');
     if (action.type === 'setUser') return { ...state, user: action.payload };
    
     if (action.type === 'changeFirstName') {
@@ -47,6 +44,12 @@ const reducer = (state, action) => {
         }};
     }
 
+    if (action.type === 'changeOthers') {
+        return { ...state, others: {
+            ...state.others, [action.payload.category]: action.payload.value
+        }}
+    }
+
     return state;
 };
 
@@ -70,6 +73,9 @@ const ContextProvider = ({ children }) => {
             gender: '',
             emailAddress: '',
             password: '',
+        },
+        others: {
+            studioHeader: 0
         }
     });
 
@@ -77,21 +83,12 @@ const ContextProvider = ({ children }) => {
         const res = await fetch(`${BASE_URL}/backend/users/single/check-cookie`);
         const data = await res.json();
 
-        console.log(' cookieChecker data', data);
-
         data.success && dispatch({ type: 'setUser', payload: data.user });
     };
 
     useEffect(() => {
         cookieChecker();
-
-        
-
     }, []);
-
-    useEffect(() => {
-        console.log('ContextProvider clientDB', clientDB);
-    }, [clientDB]);
 
     return (
         <Context.Provider value={{ clientDB, dispatch }}>
