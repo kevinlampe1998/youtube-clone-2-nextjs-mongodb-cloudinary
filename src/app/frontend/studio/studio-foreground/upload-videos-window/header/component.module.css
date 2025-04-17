@@ -1,0 +1,93 @@
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 24px 10px 15px;
+    border-bottom: 1px solid #444;
+    position: relative;
+}
+
+.top > h3 {
+    font-size: 19px;
+    margin-left: 5px;
+}
+
+.top > div { display: flex }
+
+.top > div > * {
+    border: 1px solid #282828;
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top > div > *:hover {
+    background: #3e3e3e;
+    border: 1px solid #3e3e3e;
+}
+
+.savedAsPrivate {
+    position: absolute;
+    right: 115px;
+    font-size: 12px;
+    background: #535353;
+    padding: 3px 5px;
+    border-radius: 2px;
+}
+
+.top2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 104px;
+    height: 80px;
+    width: 100%;
+}
+
+.top2 > div {
+    height: 65px;
+    width: 125px;
+    padding: 4px 16px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    padding-top: 10px;
+    border-radius: 10px;
+}
+
+.top2 > div:nth-of-type(2) > p {
+    width: 125px;
+}
+
+.top2 > div > span {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transform: translateY(-10px);
+    opacity: 0.2;
+    z-index: 5;
+}
+
+.top2 > div > p, .top2 > div > img {
+    z-index: 10;
+}
+
+.top2 > div > img {
+    border-radius: 50%;
+}
+
+.top2LineThrough {
+    position: absolute;
+    width: 700px;
+    height: 2px;
+    background: #555;
+    margin-top: 22px;
+}

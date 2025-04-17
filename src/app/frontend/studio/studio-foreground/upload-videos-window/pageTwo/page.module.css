@@ -1,0 +1,24 @@
+.pageTwo {
+    display: flex;
+}
+
+.mainLeft, .mainRight {
+    border: 1px solid blue;
+}
+
+.mainLeft {
+    width: 65%;
+}
+
+.mainRight {
+    width: 35%;
+}
+
+.videoPlaceholder {
+    height: 175px;
+    width: 300px;
+    background: #555;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
