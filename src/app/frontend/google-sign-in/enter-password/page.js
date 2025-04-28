@@ -8,6 +8,7 @@ import { useContext, useEffect, useRef } from 'react';
 import { Context } from '@/components/context-provider/context-provider';
 import BASE_URL from '@/lib/base-url';
 import { useRouter } from 'next/navigation';
+import { idSelected } from '@/lib/shortcuts';
 
 const errorRoute = '/frontend/google-something-went-wrong';
 
@@ -18,51 +19,62 @@ const EnterPassword = () => {
     const wrongPassword = useRef();
 
     useEffect(() => {
-
-        console.log('EnterPassword clientDB.signIn.password', clientDB.signIn.password);
-
-    }, [clientDB]);
-
-    useEffect(() => {
         !clientDB.signIn.recognition && router.push(errorRoute);
     }, []);
 
     const signIn = async () => {
 
-        if (!clientDB.signIn.password) {
-            alert('password is empty');
+        const selectedInput = idSelected('sign-in-user-password').value;
+        console.log('EnterPassword signIn selectedInput', selectedInput);
+
+        console.log('clientDB.signIn', clientDB.signIn);
+
+        if (!selectedInput) {
             wrongPassword.current.style.display = 'none';
             enterPassword.current.style.display = 'flex';
+            return;
         }
+
+        const payload = { recognition: clientDB.signIn.recognition, 
+            password: selectedInput };
 
         const res = await fetch(`${BASE_URL}/backend/users/single/sign-in`, {
             method: 'POST', headers: { 'content-type': 'application/json' },
-            body: JSON.stringify(clientDB.signIn)
+            body: JSON.stringify(payload)
         });
         const data = await res.json();
 
         console.log('EnterPassword signIn data', data);
         console.log('EnterPassword signIn data.passwordWrong', data.passwordWrong);
 
+        if (data.signedIn) {
+            dispatch({ type: 'setUser', payload: data.foundUser });
+            return;
+        }
+
         if (data.userNotFound) {
-            alert('User not found!');
             router.push(errorRoute);
         }
 
         if (data.passwordWrong) {
-            alert('Password is wrong!');
             enterPassword.current.style.display = 'none';
             wrongPassword.current.style.display = 'flex';
         }
-
-        if (data.signedIn) {
-            dispatch({ type: 'setUser', payload: data.foundUser });
-        }
     };
+
+    useEffect(() => {}, []);
 
     useEffect(() => {
         clientDB.user && router.push('/');
     }, [clientDB.user]);
+
+    useEffect(() => {
+        const handleKeyDown = (event) => 
+            event.key === 'Enter' && signIn();
+
+        document.addEventListener('keydown', handleKeyDown);
+        return () => document.removeEventListener('keydown', handleKeyDown);
+      }, []);
     
     return (
         <div className={styles.choose}>
@@ -90,6 +102,8 @@ const EnterPassword = () => {
                 onChange={(event) => dispatch({ type: 'setSignIn', payload: {
                     category: 'password', value: event.target.value }})}
                 value={clientDB.signIn.password}
+                onKeyDown={(e) => e.key === 'Enter' && signIn()}
+                id='sign-in-user-password'
             />
 
             <div className={styles.errorMessage} ref={enterPassword}>

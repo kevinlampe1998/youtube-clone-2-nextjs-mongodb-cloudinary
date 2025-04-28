@@ -4,7 +4,7 @@ import { useState } from "react";
 import styles from './component.module.css';
 import Img from "@/components/image/image";
 
-const Header = () => {
+const Header = ({ setCurrent }) => {
 
     const [ closeHover, setCloseHover ] = useState('');
     const [ sendFeedbackHover, setSendFeedbackHover ] = useState('');
@@ -29,7 +29,9 @@ const Header = () => {
                             18, 22, 'send-feedback' ]}/>
                     </div>
                     <div onMouseEnter={() => hoverIn(setCloseHover)}
-                        onMouseLeave={() => hoverOut(setCloseHover)}>
+                        onMouseLeave={() => hoverOut(setCloseHover)}
+                        onClick={() => setCurrent('')}
+                    >
                         <Img props={[ `/svg/studio/upload-videos/${closeHover}close.png`,
                             18, 18, 'close' ]}/>
                     </div>

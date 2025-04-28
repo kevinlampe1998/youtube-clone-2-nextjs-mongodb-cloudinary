@@ -17,7 +17,10 @@ const create = [
 
 const foreGroundChildrenIds = [
     'profile-logo-clicked',
-    'create-button-clicked'
+    'create-button-clicked',
+    'studio-upload-window',
+    'studio-foreground',
+    'studio-dark-overlay'
 ];
 
 export const closeStudioForeGround = () => {
@@ -30,13 +33,13 @@ export const closeStudioForeGround = () => {
 const emptyFunc = () => {};
 
 const ForeGround = () => {
-    const [ current, SetCurrent ] = useState('');
+    const [ current, setCurrent ] = useState('');
 
     const close = (event) => 
         event.target.id === 'studio-foreground' && closeStudioForeGround();
 
     const openUploadVideos = () => {
-        SetCurrent('upload-videos');
+        setCurrent('upload-videos');
         idSelected('studio-create-menu').style.display = 'none';
     };
 
@@ -64,7 +67,7 @@ const ForeGround = () => {
             {
                 current === 'upload-videos' ?
 
-                <UploadVideos/> : <></>
+                <UploadVideos setCurrent={setCurrent}/> : <></>
             }
 
             <section id='studio-dark-overlay'

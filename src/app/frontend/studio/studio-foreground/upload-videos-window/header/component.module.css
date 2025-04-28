@@ -1,3 +1,10 @@
+.header {
+    position: fixed;
+    background: #282828;
+    width: 960px;
+    border-radius: 25px 25px 0 0;
+}
+
 .top {
     display: flex;
     justify-content: space-between;
@@ -45,6 +52,9 @@
     gap: 104px;
     height: 80px;
     width: 100%;
+    position: relative;
+    z-index: 100;
+    background: #282828;
 }
 
 .top2 > div {

@@ -18,35 +18,48 @@ const GoogleSignIn = () => {
     const enterAnEmailOrPhoneNumber = useRef();
     const couldNotFind = useRef();
 
-    const dispatchUserRecognition = async () => {
+    const dispatchUserRecognition = () => {
 
-        recognition === '' && (couldNotFind.current.style.display = 'none');
-        recognition === '' && (enterAnEmailOrPhoneNumber.current.style.display = 'flex');
-        if (recognition === '') return;
+        const selectedInput = idSelected('sign-in-user-recognition').value;
+        console.log('selectedInput', selectedInput);
 
-        const res = await fetch(`${BASE_URL}/backend/users/single/check-if-exists/${recognition}`);
-        const data = await res.json();
-
-        console.log('GoogleSignIn dispatchUserRecognition data', data);
-
-        if (!data.existing) {
-            enterAnEmailOrPhoneNumber.current.style.display = 'none'
-            couldNotFind.current.style.display = 'flex'
+        if (selectedInput === '') {
+            couldNotFind.current.style.display = 'none';
+            enterAnEmailOrPhoneNumber.current.style.display = 'flex';
             return;
+        } else {
+            enterAnEmailOrPhoneNumber.current.style.display = 'none';
         }
 
-        dispatch({ type: 'setSignIn', payload: {
-            category: 'recognition', value: recognition }});
+        const fetchRecognition = async () => {
 
-        router.push('/frontend/google-sign-in/enter-password');
+                const res = await fetch(`${BASE_URL}/backend/users/single/check-if-exists/${selectedInput}`);
+                const data = await res.json();
+        
+                if (!data.existing) {
+                    enterAnEmailOrPhoneNumber.current.style.display = 'none'
+                    couldNotFind.current.style.display = 'flex'
+                    return;
+                }
+        
+                dispatch({ type: 'setSignIn', payload: {
+                    category: 'recognition', value: selectedInput }});
+        
+                router.push('/frontend/google-sign-in/enter-password');
+        };
+
+        fetchRecognition();
+
     };
 
     useEffect(() => {
+        const handleKeyDown = (event) => 
+            event.key === 'Enter' && dispatchUserRecognition();
 
-        console.log('recognition', recognition);
-
-    }, [recognition]);
-
+        document.addEventListener('keydown', handleKeyDown);
+        return () => document.removeEventListener('keydown', handleKeyDown);
+      }, []);
+    
     return (
         <div className={styles.googleSignIn}>
             <Image
@@ -63,6 +76,7 @@ const GoogleSignIn = () => {
                 <input className={styles.emailOrPhone} placeholder='Email or phone'
                     id='sign-in-user-recognition' value={recognition}
                     onChange={(event) => setRecognition(event.target.value)}
+                    onKeyDown={(e) => e.key === 'Enter' && dispatchUserRecognition()}
                 />
 
                 <div className={styles.errorMessage} ref={enterAnEmailOrPhoneNumber}>

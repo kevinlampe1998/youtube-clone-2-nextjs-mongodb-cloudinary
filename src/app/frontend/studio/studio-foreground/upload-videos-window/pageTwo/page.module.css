@@ -1,17 +1,83 @@
 .pageTwo {
     display: flex;
-}
-
-.mainLeft, .mainRight {
-    border: 1px solid blue;
+    margin-top: 150px;
+    margin-bottom: 300px;
+    position: relative;
+    z-index: -10;
 }
 
 .mainLeft {
-    width: 65%;
+    width: 535px;
+    margin-left: 48px;
 }
 
+/* ---- mainRight -------------------------------------------------- */
+
 .mainRight {
-    width: 35%;
+    width: 41%;
+    padding: 45px 25px;
+    position: fixed;
+    right: 30px;
+}
+
+.linkAndFileName {
+    background: #1f1f1f;
+    width: 300px;
+    height: 120px;
+    border-radius: 0 0 8px 8px;
+    padding: 11px 7px 14px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.videoLink {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+}
+
+.videoLink > div:nth-of-type(1) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+
+}
+
+.videoLink > div:nth-of-type(1) > p:nth-of-type(1) {
+    color: #a1a1a1;
+    font-size: 12px;
+}
+
+.videoLink > div:nth-of-type(1) > p:nth-of-type(2) {
+    color: #53a7eb;
+    font-size: 15px;
+}
+
+.videoLink > div:nth-of-type(2) {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.videoLink > div:nth-of-type(2):hover {
+    background: #363636;
+}
+
+.linkAndFileName > p:nth-of-type(1) {
+    margin-top: 18px;
+    font-size: 12px;
+    color: #a1a1a1;
+}
+
+.linkAndFileName > p:nth-of-type(2) {
+    margin-top: 4px;
 }
 
 .videoPlaceholder {
@@ -21,4 +87,275 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* ---- mainLeft -------------------------------------------------- */
+
+.mainTop {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mainTop h2 {
+    font-size: 23px;
+}
+
+.mainTop span {
+    background: #3e3e3e;
+    padding: 10px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* ---- title -------------------------- */
+
+.title {
+    border: 1px solid #555;
+    border-radius: 8px;
+    margin-top: 11px;
+    height: 104px;
+    padding: 8px;
+}
+
+.title div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.title > div > h5 {
+    color: #999;
+    font-size: 12px;
+}
+
+.title > textarea {
+    height: 61px;
+    margin-top: 5px;
+    background: none;
+    width: 100%;
+    border: 1px solid #333;
+}
+
+.title > p {
+    display: none;
+}
+
+/* ---- description -------------------------- */
+
+.description {
+    border: 1px solid #555;
+    border-radius: 8px;
+    margin-top: 25px;
+    height: 158px;
+    padding: 8px;
+}
+
+.description div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.description > div > h5 {
+    color: #999;
+    font-size: 12px;
+}
+
+.description > textarea {
+    height: 115px;
+    margin-top: 5px;
+    background: none;
+    width: 100%;
+    border: 1px solid #333;
+}
+
+.description > p {
+    display: none;
+}
+
+/* ---- thumbnail -------------------------- */
+
+.thumbnail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 24px;
+}
+
+.thumbnail > h2 {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.thumbnail > p {
+    font-size: 12px;
+    color: #a1a1a1;
+}
+
+.thumbnail > p > a {
+    color: #53a7eb;
+    text-decoration: none;
+}
+
+.thumbnail > div {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.thumbnail > div > div {
+    border: 1px dashed #555;
+    width: 155px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 12px;
+    color: #a1a1a1;
+    position: relative;
+    z-index: -10;
+}
+
+.thumbnail > div > div:nth-of-type(1) > img:nth-of-type(2) {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+/* ---- thumbnail -------------------------- */
+
+.playlists {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.playlists > h2 {
+    font-size: 14px;
+    margin-top: 24px;
+}
+
+.playlists > p {
+    font-size: 12px;
+    margin-top: 5px;
+    color: #a1a1a1;
+}
+
+.playlists > p > a {
+    color: #53a7eb;
+    text-decoration: none;
+}
+
+.playlists > div {
+    margin-top: 14px;
+    border: 1px solid #555;
+    width: 258px;
+    height: 47px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    overflow: hidden;
+}
+
+.playlists > div > p {
+    color: #a1a1a1;
+}
+
+/* ---- audience -------------------------- */
+
+.audience {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 24px;
+}
+
+.audience > h2 {
+    font-size: 15px;
+}
+
+.audience > div:nth-of-type(1) {
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.audience > p {
+    font-size: 12px;
+    color: #a1a1a1;
+    margin-top: 5px;
+}
+
+.audience > p > a {
+    color: #53a7eb;
+    text-decoration: none;
+}
+
+.audienceInfo {
+    background: #1f1f1f;
+    font-size: 12px;
+    color: #a1a1a1;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 535px;
+    height: 80px;
+    padding: 15px;
+}
+
+.audienceInfo > div:nth-of-type(2) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.audienceInfo > div:nth-of-type(2) > p > a {
+    text-decoration: none;
+    color: #53a7eb;
+}
+
+.audienceRadioButton {
+    display: flex;
+    margin-top: 15px;
+    gap: 8px;
+    font-size: 15px;
+}
+
+.ageRestriction {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.ageRestriction > div:nth-of-type(1) {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 10px;
+}
+
+.ageRestriction > button {
+    margin-top: 15px;
+    height: 40px;
+    width: 100px;
+    background: #3e3e3e;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 30px;
+}
+
+.ageRestriction > p {
+    margin-top: 10px;
+    color: #a1a1a1;
+    font-size: 12.5px;
 }

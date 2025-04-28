@@ -10,7 +10,7 @@ import PageOne from './pageOne/page';
 import PageTwo from './pageTwo/page';
 import PageFive from './pageFive/page';
 
-const UploadVideos = () => {
+const UploadVideos = ({ setCurrent }) => {
 
     const [video, setVideo] = useState(null);
     const [fileName, setFileName] = useState();
@@ -24,9 +24,9 @@ const UploadVideos = () => {
     const [ currentSite, setCurrentSite ] = useState(2);
 
     return (
-        <section className={styles.upload}>
+        <section className={styles.upload} id='studio-upload-window'>
 
-            { currentSite !== 1 && <Header/> }
+            { currentSite !== 1 && <Header setCurrent={setCurrent}/> }
 
             {
 
