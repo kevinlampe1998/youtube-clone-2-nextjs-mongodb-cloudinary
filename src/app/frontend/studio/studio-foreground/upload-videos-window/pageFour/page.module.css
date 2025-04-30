@@ -1,0 +1,60 @@
+.pageFour {
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 45px;
+}
+
+.pageFour p {
+    font-size: 12.5px;
+    margin-top: 5px;
+}
+
+.pageFour > h2 {
+    margin-bottom: 5px;
+}
+
+.pageFour > p:nth-of-type(2) {
+    margin-bottom: 20px;
+}
+
+.pageFour > p:nth-of-type(2) > a  {
+    color: #53a7eb;
+    text-decoration: none;
+}
+
+.pageFour > section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-right: 20px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #444;
+    margin-bottom: 15px;
+}
+
+.pageFour > section > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.pageFour > section > div > h4 {
+    font-size: 14px;
+}
+
+.pageFour > p:nth-of-type(3), .pageFour > p:nth-of-type(4) {
+    color: #a1a1a1;
+}
+
+.button {
+    align-self: flex-end;
+    background: none;
+    cursor: pointer;
+    border: none;
+    color: #fff;
+    padding: 10px;
+}
