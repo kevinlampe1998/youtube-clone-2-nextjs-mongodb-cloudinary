@@ -8,6 +8,7 @@ import Header from './header/component';
 import Footer from './footer/component';
 import PageOne from './pageOne/page';
 import PageTwo from './pageTwo/page';
+import PageThree from './pageThree/page';
 import PageFive from './pageFive/page';
 
 const UploadVideos = ({ setCurrent }) => {
@@ -21,7 +22,7 @@ const UploadVideos = ({ setCurrent }) => {
 
     const fileInputRef = useRef(null);
 
-    const [ currentSite, setCurrentSite ] = useState(2);
+    const [ currentSite, setCurrentSite ] = useState(3);
 
     return (
         <section className={styles.upload} id='studio-upload-window'>
@@ -46,6 +47,10 @@ const UploadVideos = ({ setCurrent }) => {
                     uploading={uploading} setUploading={setUploading}
                     uploadedVideo={uploadedVideo} setUploadedVideo={setUploadedVideo}    
                 />
+
+                : currentSite === 3 ?
+
+                <PageThree/>
 
                 : currentSite === 5 ?
 
